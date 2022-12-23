@@ -3,7 +3,10 @@ import { v4 as uuid } from "uuid";
 import Header from "./Header";
 import AddContact from "./AddContact";
 import ContactList from "./ContactList";
+import ContactDetail from "./ContactDetail";
+import "../../src/App.css";
 
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 function App() {
   const LOCAL_STORAGE_KEY = "contacts";
   const [contacts, setContacts] = useState(
@@ -34,9 +37,39 @@ function App() {
 
   return (
     <div className="ui container">
-      <Header />
-      <AddContact addContactHandler={addContactHandler} />
-      <ContactList contacts={contacts} getContactId={removeContactHandler} />
+      <Router>
+        <Header />
+        <Routes>
+          <Route
+            exact
+            path="/add"
+            element={<AddContact addContactHandler={addContactHandler} />}
+            render={(props) => (
+              <AddContact {...props} addContactHandler={addContactHandler} />
+            )}
+          />
+          <Route
+            path="/"
+            exact
+            element={
+              <ContactList
+                contacts={contacts}
+                getContactId={removeContactHandler}
+              />
+            }
+            render={(props) => (
+              <ContactList
+                {...props}
+                contacts={contacts}
+                getContactId={removeContactHandler}
+              />
+            )}
+          />
+          <Route path="/contact/:id" element={<ContactDetail />} />
+        </Routes>
+      </Router>
+      {/* <AddContact addContactHandler={addContactHandler} /> */}
+      {/* <ContactList contacts={contacts} getContactId={removeContactHandler} /> */}
     </div>
   );
 }
