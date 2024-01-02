@@ -1,12 +1,12 @@
-import React from "react";
-import ContactCard from "../ContactCard";
-import { Link } from "react-router-dom";
+import React from "react"
+import ContactCard from "../ContactCard"
+import { Link } from "react-router-dom"
 const ContactList = (props) => {
-  console.log(props);
+  console.log(props)
 
   const deleteConactHandler = (id) => {
-    props.getContactId(id);
-  };
+    props.getContactId(id)
+  }
 
   const renderContactList = props.contacts.map((contact) => {
     return (
@@ -15,8 +15,8 @@ const ContactList = (props) => {
         clickHander={deleteConactHandler}
         key={contact.id}
       />
-    );
-  });
+    )
+  })
   return (
     <div className="main">
       <h2>
@@ -25,9 +25,11 @@ const ContactList = (props) => {
           <button className="ui button blue right">Add Contact</button>
         </Link>
       </h2>
-      <div className="main">{renderContactList}</div>
+      <div className="main">
+        <p>{renderContactList}</p>
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default ContactList;
+export default ContactList

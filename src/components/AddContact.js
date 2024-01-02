@@ -1,21 +1,25 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
 class AddContact extends React.Component {
   state = {
     name: "",
     email: "",
-  };
+  }
 
   add = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (this.state.name === "" || this.state.email === "") {
-      alert("ALl the fields are mandatory!");
-      return;
+      alert("ALl the fields are mandatory!")
+      return
     }
-    console.log(this.state);
-    this.props.addContactHandler(this.state);
-    this.setState({ name: "", email: "" });
-  };
+    console.log(this.state)
+    const newContact = {
+      name: this.state.name,
+      email: this.state.email,
+    }
+    this.props.addContactHandler(newContact)
+    this.setState({ name: "", email: "" })
+  }
   render() {
     return (
       <div className="ui main">
@@ -41,13 +45,15 @@ class AddContact extends React.Component {
               onChange={(e) => this.setState({ email: e.target.value })}
             />
           </div>
-          <Link to="/">
-            <button className="ui button blue">Add</button>
-          </Link>
+          {/* <Link to="/"> */}
+          <button className="ui button blue" type="button" onClick={this.add}>
+            Add
+          </button>
+          {/* </Link> */}
         </form>
       </div>
-    );
+    )
   }
 }
 
-export default AddContact;
+export default AddContact
