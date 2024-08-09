@@ -38,6 +38,8 @@
 }
 .main {
   margin-top: 5em;
+  display: flex;
+  justify-content: center;
 }
 
 .center {
@@ -58,4 +60,11 @@ i.icon {
   float: right;
   font-size: 20px;
   cursor: pointer;
+}
+span{
+  margin-left: 30px;
+}
+
+.add-contact-text{
+  margin-right: 20px;
 }

@@ -5,6 +5,7 @@ import AddContact from "./AddContact"
 import ContactList from "./ContactList"
 import ContactDetail from "./ContactDetail"
 import "../../src/App.css"
+import 'semantic-ui-css/semantic.min.css';
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 function App() {
@@ -15,7 +16,7 @@ function App() {
 })
 
   const addContactHandler = (contact) => {
-    console.log('kmkmk"', contact)
+    console.log('added contact"', contact)
     const newContact = { id: uuid(), ...contact };
 
    setContacts((prevContacts) => [...prevContacts, newContact]);

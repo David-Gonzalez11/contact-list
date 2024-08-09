@@ -5,8 +5,8 @@ const ContactList = (props) => {
   console.log(props)
 
   const deleteConactHandler = (id) => {
-    props.getContactId(id)
   }
+  deleteConactHandler()
 
   const renderContactList = props.contacts.map((contact) => {
     return (
@@ -21,10 +21,13 @@ const ContactList = (props) => {
     <div className="main">
       <h2>
         Contact List
-        <Link to="/add">
-          <button className="ui button blue right">Add Contact</button>
-        </Link>
+
       </h2>
+      <span>
+          <Link to="/add">
+            <button className="ui button blue right">Add Contact</button>
+          </Link>
+        </span>
       <div className="main">
         <p>{renderContactList}</p>
       </div>
